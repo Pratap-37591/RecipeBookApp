@@ -1,0 +1,12 @@
+.css-hip9hq-MuiPaper-root-MuiAppBar-root{
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+}
+
