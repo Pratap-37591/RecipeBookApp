@@ -10,7 +10,7 @@ import { deepOrange } from "@mui/material/colors";
 
 const Navbar = ({handleSearch,updateQuery,search}) => {
   return (
-    <Box
+    <Box 
         sx={{
           flexGrow: 1,
         }}
@@ -18,7 +18,7 @@ const Navbar = ({handleSearch,updateQuery,search}) => {
         <AppBar position="fixed" sx={{marginBottom: '50px'}}>
           <Toolbar>
           <Typography variant="h6" component="div">
-            RecipeBOOKApp
+            RecipeBookApp
           </Typography>
           <Paper
             style={{

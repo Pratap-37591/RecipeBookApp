@@ -7,9 +7,9 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
+import { Divider, List, ListItem, ListItemText, Tooltip } from "@mui/material";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 const Recipe = ({ title, image, ingredients }) => {
   const [expanded, setExpanded] = React.useState(false);
@@ -30,27 +30,43 @@ const Recipe = ({ title, image, ingredients }) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 325 , margin: '50px auto'}}>
-      <CardHeader title={title} />
+    <Card sx={{ maxWidth: 325, margin: "0px auto 20px" }}>
+      <CardHeader
+        titleTypographyProps={{ variant: "h6" }}
+        sx={{
+          textOverflow: "ellipsis",
+          whiteSpace: 'nowrap', 
+         
+        }}
+        title={title}
+      />
       <CardMedia component="img" height="194" image={image} alt={image.title} />
-      
       <CardActions disableSpacing>
-      <div>Ingredients</div>
-
+        <Tooltip title="Save recipe">
+          <BookmarkIcon />
+        </Tooltip>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <ExpandMoreIcon />
+          <Tooltip title="See more">
+            <ExpandMoreIcon />
+          </Tooltip>
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          {ingredients.map((ingredient) => (
-            <Typography paragraph>{ingredient.text}</Typography>
-          ))}
+          <div style={{ marginBottom: 10, fontSize: 18 }}>Ingredients </div>
+          <Divider variant="fullWidth" />
+          <List>
+            {ingredients.map((ingredient, index) => (
+              <ListItem key={index}>
+                <ListItemText primary={ingredient.text} />
+              </ListItem>
+            ))}
+          </List>
         </CardContent>
       </Collapse>
     </Card>
@@ -58,3 +74,6 @@ const Recipe = ({ title, image, ingredients }) => {
 };
 
 export default Recipe;
+// {ingredients.map((ingredient, index) => (
+//   <Typography key={index}>{ingredient.text}</Typography>
+// ))}
