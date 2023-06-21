@@ -10,19 +10,30 @@ function App() {
 
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("chicken");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const getRecipe = async () => {
-      const response = await axios.get(
-        `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
-      );
-      setRecipes(response.data.hits);
-      console.log(response.data.hits);
+      try {
+        const query = search || getRandomSearchQuery();
+        const response = await axios.get(
+          `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
+        );
+        setRecipes(response.data.hits);
+        console.log(response.data.hits);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     getRecipe();
   }, [query]);
+
+  const getRandomSearchQuery = () => {
+    const searchQueries = ["banana", "milk", "vada", "icecream", "dessert"];
+    const randomIndex = Math.floor(Math.random() * searchQueries.length);
+    return searchQueries[randomIndex];
+  };
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -32,23 +43,24 @@ function App() {
     e.preventDefault();
     setQuery(search);
   };
+
   return (
     <div>
-     <Navbar handleSearch={handleSearch} updateQuery={updateQuery} />
+      <Navbar handleSearch={handleSearch} updateQuery={updateQuery} />
 
-     <div style={{margin: '30px'}}>
-     <Grid container>
-      {recipes.map((recipe, index) => ( 
-        <Grid item xs={3}>
-        <Recipe
-          key={index}
-          title={recipe.recipe.label}
-          image={recipe.recipe.image}
-          ingredients={recipe.recipe.ingredients}
-        />
+      <div style={{ margin: "30px", paddingTop: "4rem" }}>
+        <Grid container>
+          {recipes.map((recipe, index) => (
+            <Grid item xs={3}>
+              <Recipe
+                key={index}
+                title={recipe.recipe.label}
+                image={recipe.recipe.image}
+                ingredients={recipe.recipe.ingredients}
+              />
+            </Grid>
+          ))}
         </Grid>
-      ))}
-      </Grid>
       </div>
     </div>
   );
