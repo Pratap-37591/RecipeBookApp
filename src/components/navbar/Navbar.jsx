@@ -5,20 +5,20 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-import { Avatar} from "@mui/material";
+import { Avatar } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
 
-const Navbar = ({handleSearch,updateQuery,search}) => {
+const Navbar = ({ handleSearch, updateQuery, search }) => {
   return (
-    <Box 
-        sx={{
-          flexGrow: 1,
-        }}
-      >
-        <AppBar position="fixed" sx={{marginBottom: '50px'}}>
-          <Toolbar>
+    <Box
+      sx={{
+        flexGrow: 1,
+      }}
+    >
+      <AppBar position="fixed" sx={{ marginBottom: "50px" }}>
+        <Toolbar>
           <Typography variant="h6" component="div">
-            RecipeBookApp
+            Recipe Book
           </Typography>
           <Paper
             style={{
@@ -44,16 +44,12 @@ const Navbar = ({handleSearch,updateQuery,search}) => {
               <SearchIcon />
             </IconButton>
           </Paper>
-          <IconButton
-              color="primary"
-              sx={{ p: "5px" }}
-              aria-label="directions"
-            >
-              <Avatar sx={{ bgcolor: deepOrange[500] }}>P</Avatar>
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      </Box>
+          <IconButton color="primary" sx={{ p: "5px" }} aria-label="directions">
+            <Avatar sx={{ bgcolor: deepOrange[500] }}>P</Avatar>
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 };
 
