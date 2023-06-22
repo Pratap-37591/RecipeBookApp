@@ -4,6 +4,7 @@ import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import StyledComponent from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const ViewButton = StyledComponent.button`
 border: 2px solid #BF4F74;
@@ -11,37 +12,34 @@ border: 2px solid #BF4F74;
    color: white;
    border-radius: 4px;
    padding: 0.65em 1em;
+   
    font-family: 'Poppins', sans-serif;
    font-size: 12px;
 `;
 
-const SaveButton = StyledComponent.button`
-   border: 2px solid green;
-   background: green;
-   color: white;
-   border-radius: 4px;
-   font-family: 'Poppins', sans-serif;
-   padding: 0.50em 1em;
-`;
+// const SaveButton = StyledComponent.button`
+//    border: 2px solid green;
+//    background: green;
+//    color: white;
+//    border-radius: 4px;
+//    font-family: 'Poppins', sans-serif;
+//    padding: 0.50em 1em;
+// `;
 
-const Recipe = ({ title, image, ingredients }) => {
-  // const [expanded, setExpanded] = React.useState(false);
+const Recipe = ({ id, title, image, ingredients, ingredientLines }) => {
+  const navigate = useNavigate();
 
-  // const ExpandMore = styled((props) => {
-  //   const { expand, ...other } = props;
-  //   return <IconButton {...other} />;
-  // })(({ theme, expand }) => ({
-  //   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  //   marginLeft: "auto",
-  //   transition: theme.transitions.create("transform", {
-  //     duration: theme.transitions.duration.shortest,
-  //   }),
-  // }));
-
-  // const handleExpandClick = () => {
-  //   setExpanded(!expanded);
-  // };
-
+  const handleView = () => {
+    navigate(`/details/${id}`, {
+      state: {
+        id: id,
+        title: title,
+        image: image,
+        ingredients: ingredients,
+        ingredientLines: ingredientLines,
+      },
+    });
+  };
   return (
     <Card sx={{ maxWidth: 325, margin: "0px auto 20px" }}>
       <CardMedia component="img" height="194" image={image} alt={image.title} />
@@ -67,10 +65,11 @@ const Recipe = ({ title, image, ingredients }) => {
 
       <CardActions
         disableSpacing
-        sx={{ display: "flex", justifyContent: "space-between" }}
+        sx={{ display: "flex", justifyContent: "center" }}
       >
-        <ViewButton>View Details</ViewButton>
-        <SaveButton>Save Receipe</SaveButton>
+        <ViewButton onClick={handleView}>View Details</ViewButton>
+
+        {/* <SaveButton>Save Receipe</SaveButton> */}
       </CardActions>
     </Card>
   );
