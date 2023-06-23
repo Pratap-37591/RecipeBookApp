@@ -7,24 +7,15 @@ import StyledComponent from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const ViewButton = StyledComponent.button`
-border: 2px solid #BF4F74;
+   border: 2px solid #BF4F74;
    background: #BF4F74;
    color: white;
    border-radius: 4px;
    padding: 0.65em 1em;
-   
+   cursor: pointer;
    font-family: 'Poppins', sans-serif;
    font-size: 12px;
 `;
-
-// const SaveButton = StyledComponent.button`
-//    border: 2px solid green;
-//    background: green;
-//    color: white;
-//    border-radius: 4px;
-//    font-family: 'Poppins', sans-serif;
-//    padding: 0.50em 1em;
-// `;
 
 const Recipe = ({ id, title, image, ingredients, ingredientLines }) => {
   const navigate = useNavigate();
@@ -68,8 +59,6 @@ const Recipe = ({ id, title, image, ingredients, ingredientLines }) => {
         sx={{ display: "flex", justifyContent: "center" }}
       >
         <ViewButton onClick={handleView}>View Details</ViewButton>
-
-        {/* <SaveButton>Save Receipe</SaveButton> */}
       </CardActions>
     </Card>
   );
