@@ -10,3 +10,6 @@
     align-items: center;
 }
 
+.ant-drawer .ant-drawer-body {
+  padding: 15px 10px;
+}
