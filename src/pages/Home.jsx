@@ -43,9 +43,9 @@ const Home = () => {
     getRecipe();
   }, [query]);
 
-  if (!recipes) {
-    return <div>Is loading</div>;
-  }
+  // if (!recipes) {
+  //   return <div>Is loading</div>;
+  // }
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
