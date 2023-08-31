@@ -8,6 +8,7 @@ const RecipeDetails = () => {
   const [activeTab, setActiveTab] = useState("instructions");
   const location = useLocation();
   console.log(location.state.title);
+  const navigate = useNavigate();
 
   const backnavigate = useNavigate();
 
@@ -26,6 +27,7 @@ const RecipeDetails = () => {
       progress: undefined,
       theme: "light",
     });
+    navigate('/saved-recipes');
   };
   return (
     <>
@@ -68,7 +70,7 @@ const RecipeDetails = () => {
         </Info>
       </DetailsWrapper>
       <SaveContainer>
-        <SaveButton onClick={handleSave}>Save Receipe</SaveButton>
+        <SaveButton onClick={handleSave} >Save Receipe</SaveButton>
       </SaveContainer>
       <ToastContainer
         position="bottom-center"
@@ -134,8 +136,8 @@ const SaveContainer = StyledComponent.div`
 display:flex;
 justify-content: center;
 align-items: center;
-
 `;
+
 const SaveButton = StyledComponent.button`
    border: 2px solid green;
    background: green;
@@ -159,4 +161,6 @@ border-radius: 4px;
 font-family: 'Poppins', sans-serif;
 padding: 0.75em 1em;
 `;
+
+
 export default RecipeDetails;
