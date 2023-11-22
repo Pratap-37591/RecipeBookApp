@@ -8,7 +8,7 @@ const RecipeDetails = () => {
   const [activeTab, setActiveTab] = useState("instructions");
   const location = useLocation();
   console.log(location.state.title);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const backnavigate = useNavigate();
 
@@ -27,7 +27,7 @@ const RecipeDetails = () => {
       progress: undefined,
       theme: "light",
     });
-    navigate('/saved-recipes');
+ 
   };
   return (
     <>

@@ -5,13 +5,16 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-import { Avatar } from "@mui/material"; 
+import { Avatar } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
 import { Drawer } from "antd";
 import styled from "styled-components";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import GoogleIcon from '@mui/icons-material/Google';
 import { useNavigate } from "react-router-dom";
 const Navbar = ({ handleSearch, updateQuery, search }) => {
   const [open, setOpen] = useState(false);
@@ -76,6 +79,9 @@ const Navbar = ({ handleSearch, updateQuery, search }) => {
         </Box>
         <SocialIconContainer>
           <FacebookIcon />
+          <InstagramIcon />
+          <TwitterIcon />
+          <GoogleIcon />
         </SocialIconContainer>
       </Drawer>
       <Box
@@ -129,7 +135,7 @@ const Navbar = ({ handleSearch, updateQuery, search }) => {
 
 const SaveRecipeButton = styled.button`
   background: #ddd;
-  border: 1px solid pink;
+  border: 0px solid pink;
   padding: 1rem 2.5rem;
   width: 100%;
   font-size: 18px;
@@ -138,7 +144,7 @@ const SaveRecipeButton = styled.button`
 
 const ProfileButton = styled.button`
   background: pink;
-  border: 1px solid pink;
+  border: 0px solid pink;
   font-size: 18px;
   padding: 1rem 4rem;
   width: 100%;
